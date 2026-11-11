@@ -1,0 +1,708 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #334155;
+}
+
+.container {
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.container h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+
+.btn-utama {
+  background-color: #0284c7;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-utama:hover {
+  background-color: #0369a1;
+}
+
+/* =========================================
+   Team Directory & Team Card Styles (Modul 1.4)
+   ========================================= */
+
+.directory-container {
+  width: 100%;
+}
+
+.directory-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+
+/* 1. Widget 3-Card Statistik */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px 28px;
+  min-width: 120px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+}
+
+.stat-box.stat-box-highlight {
+  border: 1.5px solid #86efac;
+  background-color: #f0fdf4;
+}
+
+.stat-num {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0284c7;
+  /* Default: Biru untuk Total */
+  line-height: 1.2;
+}
+
+.stat-num.online {
+  color: #16a34a;
+  /* Hijau untuk Online */
+}
+
+.stat-num.offline {
+  color: #475569;
+  /* Abu-abu untuk Offline */
+}
+
+.stat-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+/* 2. Live Search Bar */
+.search-input {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto 32px auto;
+  box-sizing: border-box;
+  padding: 10px 16px;
+  font-size: 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #1e293b;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.search-input::placeholder {
+  color: #94a3b8;
+}
+
+/* 3. Grid Kartu Anggota Tim */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 12px;
+}
+
+@media (max-width: 860px) {
+  .team-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  background: #ffffff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 32px 20px;
+  color: #64748b;
+  font-size: 15px;
+}
+
+/* 4. Kartu Anggota (TeamCard) */
+.team-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 28px 20px 20px 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+}
+
+.card-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.card-info {
+  width: 100%;
+}
+
+.card-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 4px 0;
+}
+
+.card-role {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0 0 12px 0;
+  font-weight: 400;
+}
+
+/* Badge Status Online / Offline & Bintang */
+.badges-group {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.badge-online {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.badge-offline {
+  background-color: #f1f5f9;
+  color: #64748b;
+}
+
+.badge-star {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+/* Tombol Aksi Bawah: Beri Bintang & Ubah Status */
+.card-actions {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.btn-star {
+  flex: 1;
+  background-color: #ffffff;
+  color: #d97706;
+  border: 1.5px solid #f59e0b;
+  border-radius: 8px;
+  padding: 9px 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.btn-star:hover {
+  background-color: #fef3c7;
+  border-color: #d97706;
+}
+
+.btn-star:active {
+  transform: scale(0.97);
+}
+
+.btn-status-toggle {
+  flex: 1;
+  background-color: #0f172a;
+  /* Gelap pekat sesuai gambar */
+  color: #ffffff;
+  border: 1.5px solid #0f172a;
+  border-radius: 8px;
+  padding: 9px 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.btn-status-toggle:hover {
+  background-color: #1e293b;
+  border-color: #1e293b;
+}
+
+.btn-status-toggle:active {
+  transform: scale(0.97);
+}
+
+/* Kontainer Form Tambah Anggota */
+.add-member-form {
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+.form-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  text-align: left;
+  color: #0F172A;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) auto;
+  gap: 14px;
+  align-items: flex-end;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px 14px;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+}
+
+/* Indikator Validasi Error Zod */
+.input-error {
+  border-color: #EF4444 !important;
+  background: #FEF2F2;
+}
+
+.error-text {
+  color: #DC2626;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* Tombol Submit Form */
+.btn-submit {
+  background: #0284C7;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 20px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.card-bio {
+  font-size: 13px;
+  font-style: italic;
+  color: #64748B;
+  margin: 4px 0 10px 0;
+}
+
+/* Layout & Header Aplikasi */
+.app-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: system-ui, sans-serif;
+}
+
+.main-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.main-content {
+  margin-top: 24px;
+}
+
+.tab-bar {
+  display: inline-flex;
+  gap: 8px;
+  background: #e2e8f0;
+  padding: 6px;
+  border-radius: 12px;
+  margin-top: 14px;
+}
+
+.tab-btn {
+  padding: 10px 22px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 700;
+  color: #64748b;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab-btn.active {
+  background: #ffffff;
+  color: #2563eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* News Toolbar & Refresh */
+.news-container {
+  width: 100%;
+}
+
+.news-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn-refresh {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-refresh:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Status Box: Spinner & Error */
+.spinner-box {
+  text-align: center;
+  padding: 48px;
+  color: #64748b;
+}
+
+.css-spinner {
+  width: 44px;
+  height: 44px;
+  border: 4px solid #e2e8f0;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-banner {
+  background: #fef2f2;
+  border: 1.5px solid #ef4444;
+  color: #991b1b;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.error-banner button {
+  margin-top: 12px;
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+/* News Grid & Kartu Berita */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.news-card {
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+.news-thumb-wrapper {
+  position: relative;
+  width: 100%;
+  height: 180px;
+}
+
+.news-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-category-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(37, 99, 235, 0.9);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.news-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.news-headline {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.news-meta {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.news-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   ProfileCard Styles
+   ========================================= */
+
+.profile-card {
+  background: #ffffff;
+  max-width: 380px;
+  margin: 24px auto;
+  padding: 32px 24px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e2e8f0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.12), 0 10px 12px -5px rgba(0, 0, 0, 0.06);
+}
+
+.profile-avatar {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+  color: #0284c7;
+  font-size: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+}
+
+.profile-title {
+  margin: 0 0 20px 0;
+  font-size: 20px;
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.input-group {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.input-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.profile-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.2s ease;
+  color: #1e293b;
+  background-color: #f8fafc;
+}
+
+.profile-input:focus {
+  border-color: #0284c7;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.result-box {
+  width: 100%;
+  box-sizing: border-box;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-label {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.result-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.result-value em {
+  font-weight: normal;
+  color: #94a3b8;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.like-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+  transition: all 0.2s ease;
+}
+
+.like-button:hover {
+  background: linear-gradient(135deg, #0369a1, #075985);
+  box-shadow: 0 6px 14px rgba(2, 132, 199, 0.4);
+  transform: translateY(-1px);
+}
+
+.like-button:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+}
+
+.heart-icon {
+  font-size: 16px;
+}
