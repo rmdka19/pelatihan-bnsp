@@ -1,0 +1,7 @@
+/* Entry Tailwind CSS v4 — tanpa preflight.
+   Preflight (reset CSS global) sengaja tidak diimpor supaya styling lama
+   di App.css (header aplikasi & tab Berita Terkini) tetap tampil sama. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
